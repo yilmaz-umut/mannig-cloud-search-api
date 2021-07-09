@@ -2,6 +2,7 @@ package com.example.demo;
 
 import com.example.demo.integration.meaningcloud.MeaningCloudIntegrationService;
 import com.example.demo.pubmedquery.SearchHandler;
+import com.example.demo.repository.PubmedArticlesRepository;
 import com.example.demo.security.repository.RoleRepository;
 import com.example.demo.security.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -22,14 +23,17 @@ public class DemoApplication implements CommandLineRunner {
 
   private final MeaningCloudIntegrationService meaningCloudIntegrationService;
 
+  private final PubmedArticlesRepository pubmedArticlesRepository;
+
   public DemoApplication(RoleRepository roleRepository,
                          PasswordEncoder encoder, SearchHandler searchHandler,
-                         UserRepository userRepository, MeaningCloudIntegrationService meaningCloudIntegrationService) {
+                         UserRepository userRepository, MeaningCloudIntegrationService meaningCloudIntegrationService, PubmedArticlesRepository pubmedArticlesRepository) {
     this.roleRepository = roleRepository;
     this.encoder = encoder;
     this.searchHandler = searchHandler;
     this.userRepository = userRepository;
     this.meaningCloudIntegrationService = meaningCloudIntegrationService;
+    this.pubmedArticlesRepository = pubmedArticlesRepository;
   }
 
 
@@ -62,5 +66,10 @@ public class DemoApplication implements CommandLineRunner {
 
 
     searchHandler.executeESearchQuery();
+    pubmedArticlesRepository.findAll().forEach(pubmedArticles -> {
+      System.out.println(pubmedArticles.toString());
+    });
+
+
   }
 }

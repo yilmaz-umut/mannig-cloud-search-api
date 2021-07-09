@@ -92,4 +92,15 @@ public class PubmedArticles implements Serializable {
   public void setaTag(ATag aTag) {
     this.aTag = aTag;
   }
+
+  @Override
+  public String toString() {
+    return "PubmedArticles{" +
+            "id='" + id + '\'' +
+            ", pmid=" + pmid +
+            ", articleDate=" + articleDate +
+            ", articleTitle='" + articleTitle + '\'' +
+            ", aTag=" + aTag +
+            '}';
+  }
 }

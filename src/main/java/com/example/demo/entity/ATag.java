@@ -40,4 +40,14 @@ public class ATag {
     public void setSubject_list(List<String> subject_list) {
         this.subject_list = subject_list;
     }
+
+    @Override
+    public String toString() {
+        return "ATag{" +
+                "sementiy_list=" + sementiy_list +
+                ", semld_list=" + semld_list +
+                ", verb_list=" + verb_list +
+                ", subject_list=" + subject_list +
+                '}';
+    }
 }
